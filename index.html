@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Glacier HVAC Solutions | Mombasa, Kenya</title>
+<meta name="description" content="Glacier HVAC Solutions — Expert AC installation, heating repair & maintenance in Mombasa, Kenya. 24/7 emergency service. Call +254716091861."/>
+
+<!-- ✅ Tailwind from CDN (fixes broken local path) -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- ✅ Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<!-- ✅ Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<!-- ✅ Flutterwave SDK — M-Pesa STK Push + Visa/Mastercard -->
+<script src="https://checkout.flutterwave.com/v3.js"></script>
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          glacier: { 50:'#eff6ff', 100:'#dbeafe', 500:'#3b82f6', 600:'#2563eb', 700:'#1d4ed8', 800:'#1e40af', 900:'#1e3a8a' }
+        },
+        fontFamily: { inter: ['Inter','sans-serif'] }
+      }
+    }
+  }
+</script>
+
+<style>
+  /* ── Base ── */
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',sans-serif;background:#f8fafc;overflow-x:hidden}
+
+  /* ── Hero gradient overlay ── */
+  .hero-overlay{background:linear-gradient(135deg,rgba(10,31,60,.78) 0%,rgba(26,95,180,.55) 100%)}
+
+  /* ── Gradient button ── */
+  .gradient-button{background-image:linear-gradient(to right,#1d4ed8,#2563eb,#3b82f6);transition:all .3s ease}
+  .gradient-button:hover{background-image:linear-gradient(to right,#1e40af,#1d4ed8,#2563eb);box-shadow:0 4px 15px rgba(37,99,235,.4)}
+
+  /* ── Section heading underline ── */
+  .section-heading{position:relative;display:inline-block;padding-bottom:10px}
+  .section-heading::after{content:'';position:absolute;left:0;bottom:0;width:60%;height:4px;background:#2563eb;border-radius:2px}
+
+  /* ── Service card hover ── */
+  .service-card{transition:all .3s ease}
+  .service-card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(37,99,235,.15)}
+
+  /* ── Testimonial card ── */
+  .testi-card{transition:all .3s ease}
+  .testi-card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,.1)}
+
+  /* ── Sticky nav shadow on scroll ── */
+  .nav-scrolled{box-shadow:0 2px 20px rgba(0,0,0,.1)!important}
+
+  /* ── Form input focus ── */
+  .form-input{transition:border-color .2s,box-shadow .2s}
+  .form-input:focus{border-color:#3b82f6;box-shadow:0 0 0 3px rgba(59,130,246,.15);outline:none}
+
+  /* ── PAYMENT SECTION ── */
+  .pay-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:28px 24px;transition:all .3s ease;cursor:pointer}
+  .pay-card:hover{background:rgba(255,255,255,.13);transform:translateY(-4px)}
+
+  /* ── MODAL ── */
+  .modal-overlay{position:fixed;inset:0;z-index:9999;background:rgba(10,31,60,.85);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .3s ease}
+  .modal-overlay.open{opacity:1;pointer-events:all}
+  .modal-box{background:#fff;border-radius:20px;width:100%;max-width:500px;max-height:92vh;overflow-y:auto;box-shadow:0 24px 80px rgba(0,0,0,.4);transform:scale(.94) translateY(16px);transition:transform .3s ease;position:relative}
+  .modal-overlay.open .modal-box{transform:scale(1) translateY(0)}
+
+  /* ── STK Push form ── */
+  .stk-input{width:100%;padding:11px 13px;border:1.5px solid #d1d5db;border-radius:8px;font-size:.92rem;outline:none;transition:border-color .2s,box-shadow .2s;font-family:'Inter',sans-serif}
+  .stk-input:focus{border-color:#3b82f6;box-shadow:0 0 0 3px rgba(59,130,246,.15)}
+
+  /* ── Card preview ── */
+  .card-preview{background:linear-gradient(135deg,#1a1f71,#2d7ac5);border-radius:14px;padding:22px 20px;position:relative;overflow:hidden}
+  .card-preview::before{content:'';position:absolute;right:-30px;top:-30px;width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,.07)}
+  .card-chip{width:38px;height:28px;border-radius:5px;background:linear-gradient(135deg,#d4af37,#f5e07c);margin-bottom:18px}
+
+  /* ── Alert boxes ── */
+  .alert-ok{background:#dcfce7;color:#15803d;border:1px solid #bbf7d0;padding:12px 14px;border-radius:8px;font-size:.87rem;font-weight:600;margin-bottom:14px;display:none}
+  .alert-er{background:#fee2e2;color:#dc2626;border:1px solid #fecaca;padding:12px 14px;border-radius:8px;font-size:.87rem;font-weight:600;margin-bottom:14px;display:none}
+
+  /* ── Bank table ── */
+  .bank-table{width:100%;border-collapse:collapse;margin-bottom:18px}
+  .bank-table td{padding:10px 12px;border-bottom:1px solid #e5e7eb;font-size:.87rem}
+  .bank-table td:first-child{color:#6b7280;font-weight:600;font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;width:40%}
+  .bank-table td:last-child{color:#1e2b3a;font-weight:700}
+  .bank-table tr:last-child td{border-bottom:none}
+  .copy-btn{background:#f0f7ff;border:1px solid #d4e4f5;border-radius:5px;padding:3px 9px;font-size:.7rem;cursor:pointer;color:#1a5fb4;transition:all .2s;margin-left:8px}
+  .copy-btn:hover{background:#dbeafe}
+
+  /* ── Success state ── */
+  .pay-success{text-align:center;padding:20px 0;display:none}
+  .pay-success .ok-icon{width:72px;height:72px;border-radius:50%;background:#dcfce7;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:2rem;color:#16a34a}
+
+  /* ── Floating WhatsApp ── */
+  .fab-wa{position:fixed;bottom:24px;right:24px;z-index:1000;width:54px;height:54px;border-radius:50%;background:#25d366;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.45rem;box-shadow:0 4px 22px rgba(37,211,102,.5);transition:all .3s;animation:waPulse 2.8s infinite;text-decoration:none}
+  .fab-wa:hover{transform:scale(1.1)}
+  @keyframes waPulse{0%,100%{box-shadow:0 4px 22px rgba(37,211,102,.5)}50%{box-shadow:0 4px 36px rgba(37,211,102,.8)}}
+
+  /* ── Scroll-to-top ── */
+  #scrollTop{position:fixed;bottom:86px;right:24px;z-index:1000;width:42px;height:42px;border-radius:8px;background:#1d4ed8;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.88rem;opacity:0;pointer-events:none;transition:all .3s;cursor:pointer;border:none;box-shadow:0 4px 16px rgba(29,78,216,.4)}
+  #scrollTop.show{opacity:1;pointer-events:all}
+  #scrollTop:hover{background:#1e40af}
+
+  /* ── Reveal animation ── */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.visible{opacity:1;transform:none}
+
+  /* ── Mobile menu ── */
+  #mobileMenu{max-height:0;overflow:hidden;transition:max-height .35s ease}
+  #mobileMenu.open{max-height:400px}
+
+  /* ── Stats strip ── */
+  .stat-card{background:#fff;border-radius:10px;padding:20px;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,.06);transition:all .3s}
+  .stat-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.12)}
+</style>
+</head>
+<body class="text-gray-900">
+
+<!-- ════ FLOATING WHATSAPP ════ -->
+<a href="https://wa.me/254748471841?text=Hello%20Glacier%20HVAC!%20I%20need%20HVAC%20services." class="fab-wa" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+<button id="scrollTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-chevron-up"></i></button>
+
+<!-- ════ NAVBAR ════ -->
+<header id="navbar" class="bg-white shadow-sm py-3 sticky top-0 z-50 transition-shadow duration-300">
+  <div class="container mx-auto px-4 flex justify-between items-center">
+
+    <!-- Logo -->
+    <a href="#home" class="flex items-center gap-3">
+      <div class="bg-blue-600 w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0">
+        <i class="fas fa-snowflake text-white text-lg"></i>
+      </div>
+      <div>
+        <div class="text-xl font-bold text-blue-700 leading-tight hidden sm:block">Glacier HVAC Solutions</div>
+        <div class="text-xs text-blue-400 tracking-widest hidden sm:block">MOMBASA, KENYA</div>
+      </div>
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="hidden md:flex items-center gap-1">
+      <a href="#home"         class="nav-link text-gray-700 hover:text-blue-600 font-medium px-3 py-2 rounded-md transition-colors text-sm">Home</a>
+      <a href="#services"     class="nav-link text-gray-700 hover:text-blue-600 font-medium px-3 py-2 rounded-md transition-colors text-sm">Services</a>
+      <a href="#why"          class="nav-link text-gray-700 hover:text-blue-600 font-medium px-3 py-2 rounded-md transition-colors text-sm">Why Us</a>
+      <a href="#testimonials" class="nav-link text-gray-700 hover:text-blue-600 font-medium px-3 py-2 rounded-md transition-colors text-sm">Reviews</a>
+      <a href="#about"        class="nav-link text-gray-700 hover:text-blue-600 font-medium px-3 py-2 rounded-md transition-colors text-sm">About</a>
+      <a href="#payment"      class="nav-link text-gray-700 hover:text-blue-600 font-medium px-3 py-2 rounded-md transition-colors text-sm">Pay</a>
+      <a href="#contact"      class="nav-link text-gray-700 hover:text-blue-600 font-medium px-3 py-2 rounded-md transition-colors text-sm">Contact</a>
+    </nav>
+
+    <div class="hidden md:flex items-center gap-3">
+      <a href="#contact" class="gradient-button text-white text-sm font-semibold px-5 py-2 rounded-full">Free Quote</a>
+    </div>
+
+    <!-- Hamburger -->
+    <button id="hamburger" class="md:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100 transition-colors" aria-label="Menu">
+      <i class="fas fa-bars text-xl" id="ham-icon"></i>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobileMenu" class="md:hidden bg-white border-t border-gray-100">
+    <div class="container mx-auto px-4 py-2 flex flex-col gap-1">
+      <a href="#home"         class="block px-3 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md font-medium transition-colors">Home</a>
+      <a href="#services"     class="block px-3 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md font-medium transition-colors">Services</a>
+      <a href="#why"          class="block px-3 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md font-medium transition-colors">Why Us</a>
+      <a href="#testimonials" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md font-medium transition-colors">Reviews</a>
+      <a href="#about"        class="block px-3 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md font-medium transition-colors">About</a>
+      <a href="#payment"      class="block px-3 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md font-medium transition-colors">Pay</a>
+      <a href="#contact"      class="block px-3 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md font-medium transition-colors">Contact</a>
+      <a href="tel:+254748471841" class="flex items-center gap-2 mt-1 mb-2 px-3 py-2 bg-blue-600 text-white rounded-md font-semibold">
+        <i class="fas fa-phone"></i> +254 748 471 841
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ════ HERO ════ -->
+<section id="home" class="relative text-white overflow-hidden" style="min-height:92vh;display:flex;align-items:center;">
+  <!-- Background image -->
+  <div class="absolute inset-0" style="background:url('hvac background.jpg') center/cover no-repeat"></div>
+  <!-- Gradient overlay -->
+  <div class="hero-overlay absolute inset-0"></div>
+
+  <!-- Blueprint grid -->
+  <div class="absolute inset-0 opacity-5" style="background-image:linear-gradient(rgba(255,255,255,1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,1) 1px,transparent 1px);background-size:50px 50px"></div>
+
+  <div class="container mx-auto px-4 relative z-10 py-20">
+    <div class="max-w-3xl">
+      <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-blue-200 text-xs font-semibold tracking-widest uppercase px-4 py-2 rounded-full mb-6">
+        <i class="fas fa-award text-yellow-400"></i> Mombasa's Most Trusted HVAC Company
+      </div>
+      <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
+        Your Ultimate <span class="text-blue-300">Comfort</span>,<br>Guaranteed.
+      </h1>
+      <p class="text-lg md:text-xl mb-8 text-blue-100 max-w-xl">
+        Reliable HVAC solutions for residential &amp; commercial properties. Professional installation, fast repairs, 24/7 emergency service.
+      </p>
+      <div class="flex flex-wrap gap-4 mb-12">
+        <a href="#contact" class="gradient-button text-white text-lg font-semibold px-8 py-4 rounded-full shadow-lg hover:scale-105 transition-transform duration-300 inline-flex items-center gap-2">
+          <i class="fas fa-calendar-check"></i> Get a Free Quote
+        </a>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- Trust bar -->
+<div class="bg-blue-800 py-3">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-wrap justify-center gap-6 text-sm text-blue-200">
+      <span class="flex items-center gap-2"><i class="fas fa-certificate text-yellow-400"></i> Licensed &amp; Insured</span>
+      <span class="flex items-center gap-2"><i class="fas fa-star text-yellow-400"></i> 5-Star Rated</span>
+      <span class="flex items-center gap-2"><i class="fas fa-clock text-yellow-400"></i> 24/7 Emergency</span>
+      <span class="flex items-center gap-2"><i class="fas fa-bolt text-yellow-400"></i> Same-Day Available</span>
+      <span class="flex items-center gap-2"><i class="fas fa-leaf text-yellow-400"></i> Energy-Efficient</span>
+      <span class="flex items-center gap-2"><i class="fas fa-handshake text-yellow-400"></i> 100% Guarantee</span>
+    </div>
+  </div>
+</div>
+
+<!-- ════ SERVICES ════ -->
+<section id="services" class="py-16 md:py-24 bg-white">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-14 reveal">
+      <h2 class="text-4xl font-bold mb-4 section-heading mx-auto w-fit">Our Services</h2>
+      <p class="text-gray-600 text-lg mt-6 max-w-2xl mx-auto">Comprehensive HVAC solutions for homes and businesses across Mombasa and the Coast Region.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <div class="service-card bg-gray-50 p-8 rounded-xl shadow-md border border-gray-100 reveal">
+        <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-5 mx-auto">
+          <i class="fas fa-wind text-blue-600 text-2xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-center mb-3">AC Installation</h3>
+        <p class="text-gray-600 text-center mb-4">Professional installation of energy-efficient air conditioning systems sized precisely for your space.</p>
+        <ul class="text-gray-600 text-sm space-y-2 mb-5">
+          <li class="flex items-center gap-2"><i class="fas fa-check text-blue-500"></i> Energy-efficient models</li>
+          <li class="flex items-center gap-2"><i class="fas fa-check text-blue-500"></i> Precise BTU calculations</li>
+          <li class="flex items-center gap-2"><i class="fas fa-check text-blue-500"></i> Smart thermostat integration</li>
+        </ul>
+        <a href="#contact" class="block text-center text-blue-600 font-semibold hover:text-blue-800 transition-colors text-sm">Request Installation <i class="fas fa-arrow-right ml-1"></i></a>
+      </div>
+
+      <div class="service-card bg-gray-50 p-8 rounded-xl shadow-md border border-gray-100 reveal">
+        <div class="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center mb-5 mx-auto">
+          <i class="fas fa-fire text-red-500 text-2xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-center mb-3">Heating Repair</h3>
+        <p class="text-gray-600 text-center mb-4">Fast, reliable repair for all heating systems — furnaces, heat pumps and more — with 24/7 coverage.</p>
+        <ul class="text-gray-600 text-sm space-y-2 mb-5">
+          <li class="flex items-center gap-2"><i class="fas fa-check text-blue-500"></i> 24/7 emergency response</li>
+          <li class="flex items-center gap-2"><i class="fas fa-check text-blue-500"></i> Advanced diagnostic tools</li>
+          <li class="flex items-center gap-2"><i class="fas fa-check text-blue-500"></i> Same-day repairs</li>
+        </ul>
+        <a href="#contact" class="block text-center text-blue-600 font-semibold hover:text-blue-800 transition-colors text-sm">Schedule Repair <i class="fas fa-arrow-right ml-1"></i></a>
+      </div>
+
+      <div class="service-card bg-gray-50 p-8 rounded-xl shadow-md border border-gray-100 reveal">
+        <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mb-5 mx-auto">
+          <i class="fas fa-tools text-green-600 text-2xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-center mb-3">HVAC Maintenance</h3>
+        <p class="text-gray-600 text-center mb-4">Preventative maintenance plans to extend system life and ensure peak efficiency year-round.</p>
+        <ul class="text-gray-600 text-sm space-y-2 mb-5">
+          <li class="flex items-center gap-2"><i class="fas fa-check text-blue-500"></i> Bi-annual tune-up visits</li>
+          <li class="flex items-center gap-2"><i class="fas fa-check text-blue-500"></i> Priority scheduling</li>
+          <li class="flex items-center gap-2"><i class="fas fa-check text-blue-500"></i> Repair discounts</li>
+        </ul>
+        <a href="#contact" class="block text-center text-blue-600 font-semibold hover:text-blue-800 transition-colors text-sm">View Plans <i class="fas fa-arrow-right ml-1"></i></a>
+      </div>
+
+      <div class="service-card bg-gray-50 p-8 rounded-xl shadow-md border border-gray-100 reveal">
+        <div class="w-16 h-16 bg-indigo-100 rounded-2xl flex items-center justify-center mb-5 mx-auto">
+          <i class="fas fa-fan text-indigo-600 text-2xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-center mb-3">Duct Cleaning</h3>
+        <p class="text-gray-600 text-center mb-4">Improve indoor air quality and system efficiency with professional duct cleaning.</p>
+        <ul class="text-gray-600 text-sm space-y-2 mb-5">
+          <li class="flex items-center gap-2"><i class="fas fa-check text-blue-500"></i> HEPA-grade vacuuming</li>
+          <li class="flex items-center gap-2"><i class="fas fa-check text-blue-500"></i> Mold &amp; bacteria treatment</li>
+          <li class="flex items-center gap-2"><i class="fas fa-check text-blue-500"></i> Before &amp; after photos</li>
+        </ul>
+        <a href="#contact" class="block text-center text-blue-600 font-semibold hover:text-blue-800 transition-colors text-sm">Book Cleaning <i class="fas fa-arrow-right ml-1"></i></a>
+      </div>
+
+      <div class="service-card bg-gray-50 p-8 rounded-xl shadow-md border border-gray-100 reveal">
+        <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mb-5 mx-auto">
+          <i class="fas fa-thermometer-half text-purple-600 text-2xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-center mb-3">Smart Thermostat</h3>
+        <p class="text-gray-600 text-center mb-4">Upgrade to intelligent climate control — save energy and manage remotely from your phone.</p>
+        <ul class="text-gray-600 text-sm space-y-2 mb-5">
+          <li class="flex items-center gap-2"><i class="fas fa-check text-blue-500"></i> Wi-Fi enabled scheduling</li>
+          <li class="flex items-center gap-2"><i class="fas fa-check text-blue-500"></i> Energy analytics</li>
+          <li class="flex items-center gap-2"><i class="fas fa-check text-blue-500"></i> Remote mobile control</li>
+        </ul>
+        <a href="#contact" class="block text-center text-blue-600 font-semibold hover:text-blue-800 transition-colors text-sm">Get Upgrade <i class="fas fa-arrow-right ml-1"></i></a>
+      </div>
+
+      <div class="service-card bg-gray-50 p-8 rounded-xl shadow-md border border-gray-100 reveal">
+        <div class="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mb-5 mx-auto">
+          <i class="fas fa-bolt text-orange-500 text-2xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-center mb-3">Emergency Services</h3>
+        <p class="text-gray-600 text-center mb-4">24/7 emergency repair — our team dispatched within the hour, any time of day or night.</p>
+        <ul class="text-gray-600 text-sm space-y-2 mb-5">
+          <li class="flex items-center gap-2"><i class="fas fa-check text-blue-500"></i> Available 24/7</li>
+          <li class="flex items-center gap-2"><i class="fas fa-check text-blue-500"></i> &lt;60-min response in Mombasa</li>
+          <li class="flex items-center gap-2"><i class="fas fa-check text-blue-500"></i> No extra night/weekend charge</li>
+        </ul>
+        <a href="tel:+254748471841" class="block text-center text-blue-600 font-semibold hover:text-blue-800 transition-colors text-sm">Call Emergency Line <i class="fas fa-arrow-right ml-1"></i></a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════ WHY CHOOSE US ════ -->
+<section id="why" class="py-16 md:py-24 bg-blue-50">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-14 reveal">
+      <h2 class="text-4xl font-bold mb-4 section-heading mx-auto w-fit">Why Choose GLACIER HVAC?</h2>
+      <p class="text-gray-600 text-lg mt-6 max-w-2xl mx-auto">We're committed to excellence in every job — big or small.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="bg-white p-6 rounded-xl shadow-md flex items-start gap-4 hover:scale-105 transition-transform duration-300 reveal">
+        <div class="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center flex-shrink-0"><i class="fas fa-user-check text-white text-lg"></i></div>
+        <div><h3 class="text-lg font-bold mb-1">Certified Technicians</h3><p class="text-gray-600 text-sm">Highly trained professionals with 10+ years of HVAC expertise.</p></div>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow-md flex items-start gap-4 hover:scale-105 transition-transform duration-300 reveal">
+        <div class="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center flex-shrink-0"><i class="fas fa-medal text-white text-lg"></i></div>
+        <div><h3 class="text-lg font-bold mb-1">Quality Guarantee</h3><p class="text-gray-600 text-sm">100% satisfaction guarantee on every service we provide.</p></div>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow-md flex items-start gap-4 hover:scale-105 transition-transform duration-300 reveal">
+        <div class="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center flex-shrink-0"><i class="fas fa-tag text-white text-lg"></i></div>
+        <div><h3 class="text-lg font-bold mb-1">Transparent Pricing</h3><p class="text-gray-600 text-sm">No hidden fees — honest, competitive quotes every time.</p></div>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow-md flex items-start gap-4 hover:scale-105 transition-transform duration-300 reveal">
+        <div class="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center flex-shrink-0"><i class="fas fa-bolt text-white text-lg"></i></div>
+        <div><h3 class="text-lg font-bold mb-1">Rapid Response</h3><p class="text-gray-600 text-sm">24/7 emergency with same-day availability across Mombasa.</p></div>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow-md flex items-start gap-4 hover:scale-105 transition-transform duration-300 reveal">
+        <div class="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center flex-shrink-0"><i class="fas fa-leaf text-white text-lg"></i></div>
+        <div><h3 class="text-lg font-bold mb-1">Energy Efficient</h3><p class="text-gray-600 text-sm">Eco-friendly solutions that lower your energy bills significantly.</p></div>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow-md flex items-start gap-4 hover:scale-105 transition-transform duration-300 reveal">
+        <div class="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center flex-shrink-0"><i class="fas fa-headset text-white text-lg"></i></div>
+        <div><h3 class="text-lg font-bold mb-1">Lifetime Support</h3><p class="text-gray-600 text-sm">Ongoing technical support for all installations and maintenance plans.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ TESTIMONIALS ════ -->
+<section id="testimonials" class="py-16 md:py-24 bg-white">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-14 reveal">
+      <h2 class="text-4xl font-bold mb-4 section-heading mx-auto w-fit">What Our Clients Say</h2>
+      <p class="text-gray-600 text-lg mt-6 max-w-2xl mx-auto">Over 5,000 satisfied clients across Mombasa and the Coast Region trust Glacier HVAC.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <div class="testi-card bg-blue-50 p-6 rounded-xl shadow-lg border-t-4 border-blue-600 reveal">
+        <div class="flex text-yellow-400 mb-3 text-sm">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <p class="text-gray-700 italic mb-5">"GLACIER HVAC Solutions did an amazing job installing our new AC unit. Professional, timely, and excellent service! Our home has never been more comfortable."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">SW</div>
+          <div><p class="font-semibold text-gray-800">Susan Wanjiru</p><p class="text-xs text-gray-500">Mombasa CBD · AC Installation</p></div>
+        </div>
+      </div>
+
+      <div class="testi-card bg-blue-50 p-6 rounded-xl shadow-lg border-t-4 border-blue-600 reveal">
+        <div class="flex text-yellow-400 mb-3 text-sm">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+        </div>
+        <p class="text-gray-700 italic mb-5">"Their heating repair service was incredibly fast and effective. They came out on a Sunday evening when our furnace failed. Highly recommend!"</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">AH</div>
+          <div><p class="font-semibold text-gray-800">Ali Hassan</p><p class="text-xs text-gray-500">Nyali · Heating Repair</p></div>
+        </div>
+      </div>
+
+      <div class="testi-card bg-blue-50 p-6 rounded-xl shadow-lg border-t-4 border-blue-600 reveal">
+        <div class="flex text-yellow-400 mb-3 text-sm">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <p class="text-gray-700 italic mb-5">"We've been using Glacier HVAC for years for maintenance. Always thorough, always on time. Their plan has saved us thousands in avoided breakdowns!"</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">RP</div>
+          <div><p class="font-semibold text-gray-800">Raj Patel</p><p class="text-xs text-gray-500">Bamburi · Maintenance Plan</p></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════ ABOUT ════ -->
+<section id="about" class="py-16 md:py-24 bg-blue-50">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-col md:flex-row items-center gap-14">
+      <div class="md:w-1/2 reveal">
+        <div class="relative">
+          <img src="hvac tech.jpg" alt="HVAC technicians working" class="w-full h-80 object-cover rounded-xl shadow-xl"/>
+        </div>
+      </div>
+      <div class="md:w-1/2 reveal">
+        <h2 class="text-4xl font-bold mb-6 section-heading w-fit">About GLACIER HVAC Solutions</h2>
+        <p class="text-gray-700 text-lg mb-4 mt-4">
+          Founded in 2010, Glacier HVAC Solutions has been the Coast Region's most trusted name for heating, ventilation, and air conditioning. What started as a small family operation has grown into a certified team serving thousands of homes and businesses.
+        </p>
+        <p class="text-gray-700 text-lg mb-6">
+          Our mission is simple — keep every space comfortable, every system efficient, and every client fully satisfied. We build long-term relationships on honest pricing, quality workmanship, and round-the-clock availability.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <span class="flex items-center gap-2 bg-white px-4 py-2 rounded-full text-sm font-semibold border border-blue-100"><i class="fas fa-check-circle text-green-500"></i> Licensed &amp; Insured</span>
+          <span class="flex items-center gap-2 bg-white px-4 py-2 rounded-full text-sm font-semibold border border-blue-100"><i class="fas fa-check-circle text-green-500"></i> Local &amp; Family-Owned</span>
+          <span class="flex items-center gap-2 bg-white px-4 py-2 rounded-full text-sm font-semibold border border-blue-100"><i class="fas fa-check-circle text-green-500"></i> Eco-Conscious</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ PAYMENT SECTION ════ -->
+<section id="payment" class="py-16 md:py-24" style="background:linear-gradient(160deg,#0a1f3c 0%,#0e2d5c 55%,#1a4a8a 100%)">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-14 reveal">
+      <div class="inline-block w-10 h-1 bg-yellow-400 rounded mb-3"></div>
+      <p class="text-yellow-400 text-xs font-bold tracking-widest uppercase mb-2">Secure Payments</p>
+      <h2 class="text-4xl font-bold text-white mb-4">How to <em class="text-blue-300 not-italic">Pay Us</em></h2>
+      <p class="text-blue-200 text-lg max-w-xl mx-auto">We accept M-Pesa, Visa/Mastercard and direct bank transfer. All payments are encrypted and secure.</p>
+    </div>
+
+    <!-- ✅ Interactive Badges (now clickable buttons) -->
+    <div class="flex flex-wrap justify-center gap-4 mb-12 reveal">
+      <!-- M-Pesa Badge -->
+      <div onclick="openModal('mpesa-modal')" role="button" tabindex="0" 
+           class="flex items-center gap-3 bg-white/10 border border-white/20 rounded-xl px-5 py-3 transition-all duration-200 cursor-pointer hover:bg-white/20 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-400">
+        <div class="bg-green-600 rounded-lg px-3 py-1 flex items-center gap-2">
+          <i class="fas fa-mobile-alt text-white"></i>
+          <span class="text-white font-bold text-sm">M-PESA</span>
+        </div>
+        <span class="text-white text-sm font-medium">Safaricom M-Pesa</span>
+      </div>
+
+      <!-- Visa / Mastercard Badge -->
+      <div onclick="openModal('visa-modal')" role="button" tabindex="0"
+           class="flex items-center gap-3 bg-white/10 border border-white/20 rounded-xl px-5 py-3 transition-all duration-200 cursor-pointer hover:bg-white/20 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-400">
+        <div class="bg-gradient-to-r from-blue-900 to-blue-600 rounded-lg px-3 py-1">
+          <span class="text-white font-bold italic tracking-wider">VISA</span>
+        </div>
+        <span class="text-white text-sm font-medium">Visa / Mastercard</span>
+      </div>
+
+      <!-- Bank Transfer Badge -->
+      <div onclick="openModal('bank-modal')" role="button" tabindex="0"
+           class="flex items-center gap-3 bg-white/10 border border-white/20 rounded-xl px-5 py-3 transition-all duration-200 cursor-pointer hover:bg-white/20 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-yellow-400">
+        <i class="fas fa-university text-yellow-400 text-xl"></i>
+        <span class="text-white text-sm font-medium">Bank Transfer</span>
+      </div>
+    </div>
+    <p class="text-center text-blue-400 text-xs mt-8 flex items-center justify-center gap-2 reveal">
+      <i class="fas fa-lock text-green-400"></i> All payments are processed securely. Your financial information is never stored on our servers.
+    </p>
+  </div>
+</section>
+
+
+<!-- ════ CONTACT ════ -->
+<section id="contact" class="py-16 md:py-24 bg-white">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-14 reveal">
+      <h2 class="text-4xl font-bold mb-4 section-heading mx-auto w-fit">Get in Touch</h2>
+      <p class="text-gray-600 text-lg mt-6 max-w-2xl mx-auto">Request a free quote or emergency service. We respond within 1 hour.</p>
+    </div>
+    <div class="flex flex-col lg:flex-row gap-10">
+
+      <!-- Contact Form — Formspree backend → glacierhvacsolution@gmail.com -->
+      <div class="lg:w-1/2 reveal">
+        <div class="bg-blue-50 p-8 rounded-xl shadow-lg border-t-4 border-blue-600">
+          <h3 class="text-2xl font-bold mb-2">Request a Service or Quote</h3>
+          <p class="text-gray-500 text-sm mb-6">All fields marked * are required. We reply to every enquiry.</p>
+
+          <div id="formAlert" class="hidden mb-4 p-3 rounded-lg text-sm font-semibold"></div>
+
+          <form id="contactForm" novalidate class="space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-1">Name *</label>
+                <input type="text" name="name" placeholder="Your Name" required class="form-input w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm"/>
+              </div>
+              <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-1">Phone *</label>
+                <input type="tel" name="phone" placeholder="+254 7XX XXX XXX" required class="form-input w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm"/>
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-gray-700 mb-1">Email *</label>
+              <input type="email" name="email" placeholder="you@example.com" required class="form-input w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm"/>
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-gray-700 mb-1">Service Needed *</label>
+              <select name="service" required class="form-input w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm bg-white">
+                <option value="">Select a Service</option>
+                <option>AC Installation</option>
+                <option>Heating Repair</option>
+                <option>HVAC Maintenance</option>
+                <option>Duct Cleaning</option>
+                <option>Smart Thermostat Installation</option>
+                <option>Emergency Service</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-gray-700 mb-1">Your Location</label>
+              <input type="text" name="location" placeholder="e.g. Nyali, Bamburi, Likoni…" class="form-input w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm"/>
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-gray-700 mb-1">Message *</label>
+              <textarea name="message" rows="4" placeholder="Describe your needs or ask a question…" required class="form-input w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm resize-none"></textarea>
+            </div>
+            <button type="submit" id="submitBtn" class="w-full gradient-button text-white text-lg font-semibold py-3 rounded-xl shadow-lg hover:scale-105 transition-transform duration-300 flex items-center justify-center gap-2">
+              <i class="fas fa-paper-plane"></i> Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="lg:w-1/2 reveal">
+        <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 mb-6">
+          <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+          <div class="space-y-5">
+            <div class="flex items-start gap-4">
+              <div class="w-11 h-11 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0"><i class="fas fa-map-marker-alt text-blue-600"></i></div>
+              <div><p class="font-semibold text-gray-800">Location</p><p class="text-gray-600 text-sm">Mombasa, Coast Region, Kenya</p></div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-11 h-11 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0"><i class="fas fa-phone text-blue-600"></i></div>
+              <div>
+                <p class="font-semibold text-gray-800">Phone / WhatsApp</p>
+                <a href="tel:+254716091861" class="text-blue-600 hover:text-blue-800 text-sm font-medium">+254 748 471 841</a>
+                <p class="text-green-600 text-xs mt-1"><i class="fas fa-circle text-xs"></i> Emergency line — 24/7</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-11 h-11 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0"><i class="fas fa-envelope text-blue-600"></i></div>
+              <div>
+                <p class="font-semibold text-gray-800">Email</p>
+                <a href="mailto:glacierhvacsolution@gmail.com" class="text-blue-600 hover:text-blue-800 text-sm block">glacierhvacsolution@gmail.com</a>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-11 h-11 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0"><i class="fas fa-clock text-blue-600"></i></div>
+              <div>
+                <p class="font-semibold text-gray-800">Working Hours</p>
+                <p class="text-gray-600 text-sm">Mon–Fri: 8:00 AM – 6:00 PM</p>
+                <p class="text-gray-600 text-sm">Saturday: 9:00 AM – 4:00 PM</p>
+                <p class="text-gray-600 text-sm">Sunday: Emergency Service Only</p>
+              </div>
+            </div>
+          </div>
+          <div class="flex gap-3 mt-6">
+            <a href="https://wa.me/254748471841" target="_blank" class="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white text-sm font-bold px-4 py-2 rounded-lg transition-colors"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="https://facebook.com" target="_blank" class="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold px-4 py-2 rounded-lg transition-colors"><i class="fab fa-facebook-f"></i> Facebook</a>
+            <a href="https://instagram.com" target="_blank" class="flex items-center gap-2 text-white text-sm font-bold px-4 py-2 rounded-lg transition-colors" style="background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#bc1888)"><i class="fab fa-instagram"></i> Instagram</a>
+          </div>
+        </div>
+        <!-- Live Google Map — Mombasa -->
+        <div class="rounded-xl overflow-hidden shadow-lg border border-gray-100" style="height:220px">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63766.32!2d39.62774!3d-4.04346!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1840100765b0bb45%3A0x9a55a705b52bdc2e!2sMombasa%2C%20Kenya!5e0!3m2!1sen!2ske!4v1700000000000" width="100%" height="100%" style="border:0" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Glacier HVAC — Mombasa"></iframe>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════ FOOTER ════ -->
+<footer class="bg-gray-900 text-white py-12 rounded-t-2xl">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <div class="bg-blue-600 w-10 h-10 rounded-full flex items-center justify-center"><i class="fas fa-snowflake text-white"></i></div>
+          <div><div class="font-bold text-lg">Glacier HVAC</div><div class="text-blue-400 text-xs tracking-widest">SOLUTIONS</div></div>
+        </div>
+        <p class="text-gray-400 text-sm leading-relaxed">Providing premium heating and cooling solutions for Mombasa since 2010. Your comfort, our mission.</p>
+      </div>
+      <div>
+        <h4 class="font-bold mb-4 text-sm tracking-widest uppercase">Services</h4>
+        <ul class="space-y-2 text-gray-400 text-sm">
+          <li><a href="#services" class="hover:text-blue-400 transition-colors">AC Installation</a></li>
+          <li><a href="#services" class="hover:text-blue-400 transition-colors">Heating Repair</a></li>
+          <li><a href="#services" class="hover:text-blue-400 transition-colors">HVAC Maintenance</a></li>
+          <li><a href="#services" class="hover:text-blue-400 transition-colors">Duct Cleaning</a></li>
+          <li><a href="#services" class="hover:text-blue-400 transition-colors">Emergency Service</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold mb-4 text-sm tracking-widest uppercase">Company</h4>
+        <ul class="space-y-2 text-gray-400 text-sm">
+          <li><a href="#home" class="hover:text-blue-400 transition-colors">Home</a></li>
+          <li><a href="#about" class="hover:text-blue-400 transition-colors">About Us</a></li>
+          <li><a href="#testimonials" class="hover:text-blue-400 transition-colors">Testimonials</a></li>
+          <li><a href="#payment" class="hover:text-blue-400 transition-colors">Payment</a></li>
+          <li><a href="#contact" class="hover:text-blue-400 transition-colors">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold mb-4 text-sm tracking-widest uppercase">Contact</h4>
+        <ul class="space-y-2 text-gray-400 text-sm">
+          <li class="flex items-center gap-2"><i class="fas fa-map-marker-alt text-blue-400 w-4"></i> Mombasa, Kenya</li>
+          <li class="flex items-center gap-2"><i class="fas fa-phone text-blue-400 w-4"></i><a href="tel:+254748471841" class="hover:text-blue-400 transition-colors">+254 748 481 841</a></li>
+          <li class="flex items-center gap-2"><i class="fas fa-envelope text-blue-400 w-4"></i><a href="mailto:glacierhvacsolution@gmail.com" class="hover:text-blue-400 transition-colors">Email Us</a></li>
+          <li class="flex items-center gap-2"><i class="fas fa-clock text-blue-400 w-4"></i> Mon–Fri 8AM–6PM</li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-gray-800 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-gray-500">
+      <p>© 2025 Glacier HVAC Solutions. All rights reserved. Designed by <span class="text-red-400 font-semibold">MWASHUKE</span></p>
+      <div class="flex gap-4">
+        <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+        <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════
+     MODAL — M-Pesa
+══════════════════════════════════════════ -->
+<!-- ══════════════════════════════════════════
+     MODAL — M-Pesa (Personal Send Money)
+══════════════════════════════════════════ -->
+<!-- ══════════════════════════════════════════
+     MODAL — M-Pesa (Till 9281612 + Daraja STK Push)
+══════════════════════════════════════════ -->
+<div class="modal-overlay" id="mpesa-modal">
+  <div class="modal-box">
+    <div class="flex items-center justify-between p-6 border-b border-gray-100">
+      <h3 class="text-xl font-bold text-gray-900 flex items-center gap-2"><i class="fas fa-mobile-alt text-green-600"></i> Pay via M-Pesa</h3>
+      <button onclick="closeModal('mpesa-modal')" class="w-8 h-8 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center text-gray-500 transition-colors"><i class="fas fa-times text-sm"></i></button>
+    </div>
+    <div class="p-6">
+
+      <!-- Success -->
+      <div class="pay-success" id="mpesa-success">
+        <div class="ok-icon"><i class="fas fa-check"></i></div>
+        <h4 class="text-xl font-bold text-gray-900 mb-2">STK Push Sent!</h4>
+        <p class="text-gray-600 text-sm">Check your phone — enter your M-Pesa PIN to complete payment.</p>
+      </div>
+
+      <div id="mpesa-form-wrap">
+        <!-- Till banner -->
+        <div class="bg-green-600 rounded-xl p-4 mb-5 text-center">
+          <p class="text-green-100 text-xs uppercase tracking-widest mb-1">Lipa Na M-Pesa · Till Number</p>
+          <p class="text-white text-4xl font-extrabold tracking-wider">9281612</p>
+          <p class="text-green-200 text-xs mt-1">Evan MWAITA Mwashuke · Glacier HVAC</p>
+          <button onclick="copyText('9281612',this)" class="mt-2 bg-white/20 hover:bg-white/30 text-white text-xs font-bold px-4 py-1.5 rounded-lg transition-colors inline-flex items-center gap-1 mx-auto">
+            <i class="fas fa-copy"></i> Copy Till
+          </button>
+        </div>
+
+        <!-- STK Push form -->
+        <p class="text-center text-xs text-gray-400 font-semibold mb-3">— OR get an instant push to your phone —</p>
+        <div id="stk-alert" class="alert-er"></div>
+        <div class="space-y-3">
+          <div>
+            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wide mb-1">Your Name</label>
+            <input type="text" id="stk-name" class="stk-input" placeholder="John Mwangi">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wide mb-1">M-Pesa Phone Number *</label>
+            <input type="tel" id="stk-phone" class="stk-input" placeholder="07XXXXXXXX" maxlength="10">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wide mb-1">Amount (KES) *</label>
+            <input type="number" id="stk-amount" class="stk-input" placeholder="e.g. 4500" min="1">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wide mb-1">Service *</label>
+            <select id="stk-service" class="stk-input bg-white">
+              <option value="">— Select Service —</option>
+              <option>AC Installation</option>
+              <option>Heating Repair</option>
+              <option>HVAC Maintenance</option>
+              <option>Duct Cleaning</option>
+              <option>Emergency Service</option>
+              <option>Other / Custom Amount</option>
+            </select>
+          </div>
+          <button id="stk-btn" onclick="sendDarajaSTK()" class="w-full py-3 bg-green-600 hover:bg-green-700 text-white font-bold rounded-lg transition-colors flex items-center justify-center gap-2">
+            <i class="fas fa-paper-plane"></i> Send STK Push to My Phone
+          </button>
+          <p class="text-center text-xs text-gray-400"><i class="fas fa-lock text-green-500"></i> Powered by Safaricom Daraja · Payments go to Till 9281612</p>
+        </div>
+
+        <!-- Manual steps fallback -->
+        <details class="mt-4">
+          <summary class="text-xs font-semibold text-gray-400 cursor-pointer hover:text-blue-500 transition-colors">Prefer to pay manually? Click here</summary>
+          <div class="mt-3 space-y-2">
+            <div class="flex gap-3 items-start bg-gray-50 rounded-xl p-3">
+              <div class="w-6 h-6 bg-green-600 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0">1</div>
+              <p class="text-xs text-gray-700">Go to <strong>M-Pesa → Lipa na M-Pesa → Buy Goods</strong></p>
+            </div>
+            <div class="flex gap-3 items-start bg-gray-50 rounded-xl p-3">
+              <div class="w-6 h-6 bg-green-600 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0">2</div>
+              <p class="text-xs text-gray-700">Enter Till Number <code class="bg-gray-800 text-yellow-400 px-1 rounded">9281612</code> → Confirm <strong>Evan Mwashuke</strong></p>
+            </div>
+            <div class="flex gap-3 items-start bg-gray-50 rounded-xl p-3">
+              <div class="w-6 h-6 bg-green-600 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0">3</div>
+              <p class="text-xs text-gray-700">Enter amount → PIN → Confirm. Then WhatsApp us your receipt.</p>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     MODAL — Visa / Card
+══════════════════════════════════════════ -->
+<div class="modal-overlay" id="visa-modal">
+  <div class="modal-box">
+    <div class="flex items-center justify-between p-6 border-b border-gray-100">
+      <h3 class="text-xl font-bold text-gray-900 flex items-center gap-2"><i class="fas fa-credit-card text-blue-600"></i> Pay by Card</h3>
+      <button onclick="closeModal('visa-modal')" class="w-8 h-8 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center text-gray-500 transition-colors"><i class="fas fa-times text-sm"></i></button>
+    </div>
+    <div class="p-6">
+
+      <div class="pay-success" id="visa-success">
+        <div class="ok-icon"><i class="fas fa-check"></i></div>
+        <h4 class="text-xl font-bold text-gray-900 mb-2">Payment Authorised!</h4>
+        <p class="text-gray-600 text-sm">Your card payment was processed successfully.<br>A receipt will be sent to your email.</p>
+      </div>
+
+      <div id="visa-form-wrap">
+        <!-- Card preview -->
+        <div class="card-preview mb-5">
+          <div class="card-chip"></div>
+          <p class="font-mono text-white text-base tracking-widest mb-4" id="prev-num">•••• •••• •••• ••••</p>
+          <div class="flex justify-between items-end">
+            <div><p class="text-white/60 text-xs uppercase tracking-wider">Card Holder</p><p class="text-white font-semibold text-sm" id="prev-name">YOUR NAME</p></div>
+            <div class="text-right"><p class="text-white/60 text-xs uppercase tracking-wider">Expires</p><p class="text-white font-semibold text-sm" id="prev-exp">MM/YY</p></div>
+            <div class="italic font-bold text-white text-xl tracking-wider">VISA</div>
+          </div>
+        </div>
+
+        <div class="bg-green-50 border border-green-200 rounded-xl p-3 mb-4 flex gap-2 items-start">
+          <i class="fas fa-shield-alt text-green-600 mt-0.5 flex-shrink-0"></i>
+          <p class="text-green-800 text-xs">Card number, expiry &amp; CVV are entered in <strong>Flutterwave's PCI-DSS Level 1 secure popup</strong> — never on this page.</p>
+        </div>
+
+        <div id="card-alert" class="alert-er"></div>
+
+        <div class="space-y-3">
+          <div><label class="block text-xs font-bold text-gray-700 uppercase tracking-wide mb-1">Full Name (as on card) *</label><input type="text" id="card-name" class="stk-input uppercase" placeholder="JOHN MWANGI" oninput="updatePreview()"></div>
+          <div class="grid grid-cols-2 gap-3">
+            <div><label class="block text-xs font-bold text-gray-700 uppercase tracking-wide mb-1">Email *</label><input type="email" id="card-email" class="stk-input" placeholder="you@example.com"></div>
+            <div><label class="block text-xs font-bold text-gray-700 uppercase tracking-wide mb-1">Phone</label><input type="tel" id="card-phone" class="stk-input" placeholder="07XXXXXXXX"></div>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div><label class="block text-xs font-bold text-gray-700 uppercase tracking-wide mb-1">Amount (KES) *</label><input type="number" id="card-amount" class="stk-input" placeholder="e.g. 12000" min="1"></div>
+            <div>
+              <label class="block text-xs font-bold text-gray-700 uppercase tracking-wide mb-1">Service *</label>
+              <select id="card-service" class="stk-input bg-white">
+                <option value="">— Select —</option>
+                <option>Basic Care — KES 4,500</option>
+                <option>Standard Plan — KES 12,000</option>
+                <option>Premium Shield — KES 24,000</option>
+                <option>AC Installation</option>
+                <option>Heating Repair</option>
+                <option>Emergency Service</option>
+                <option>Other / Custom</option>
+              </select>
+            </div>
+          </div>
+          <button id="visa-pay-btn" onclick="processCard()" class="w-full py-3 bg-blue-700 hover:bg-blue-800 text-white font-bold rounded-lg transition-colors flex items-center justify-center gap-2">
+            <i class="fas fa-lock"></i> Continue to Secure Payment
+          </button>
+          <div class="flex items-center justify-center gap-3 text-xs text-gray-400">
+            <span><i class="fas fa-shield-alt text-green-500"></i> PCI-DSS</span>
+            <span><i class="fas fa-lock text-blue-400"></i> 256-bit SSL</span>
+            <span><i class="fas fa-check-circle text-green-500"></i> 3D Secure</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     MODAL — Bank Transfer
+══════════════════════════════════════════ -->
+<div class="modal-overlay" id="bank-modal">
+  <div class="modal-box">
+    <div class="flex items-center justify-between p-6 border-b border-gray-100">
+      <h3 class="text-xl font-bold text-gray-900 flex items-center gap-2"><i class="fas fa-university text-yellow-600"></i> Bank Transfer Details</h3>
+      <button onclick="closeModal('bank-modal')" class="w-8 h-8 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center text-gray-500 transition-colors"><i class="fas fa-times text-sm"></i></button>
+    </div>
+    <div class="p-6">
+      <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-4 mb-5 flex gap-3 items-start">
+        <i class="fas fa-info-circle text-yellow-600 mt-0.5 flex-shrink-0"></i>
+        <div>
+          <p class="text-yellow-800 font-semibold text-sm">Use the details below to transfer directly.</p>
+          <p class="text-yellow-700 text-xs mt-1">After paying, send proof to <a href="mailto:glacierhvacsolution@gmail.com" class="underline">glacierhvacsolution@gmail.com</a></p>
+        </div>
+      </div>
+      <table class="bank-table">
+        <tr><td>Bank Name</td><td>Equity Bank Kenya <button class="copy-btn" onclick="copyText('Equity Bank Kenya',this)"><i class="fas fa-copy"></i></button></td></tr>
+        <tr><td>Account Name</td><td>Glacier HVAC Solutions <button class="copy-btn" onclick="copyText('Glacier HVAC Solutions',this)"><i class="fas fa-copy"></i></button></td></tr>
+        <tr><td>Account No.</td><td>0290299467201 <button class="copy-btn" onclick="copyText('0290299467201',this)"><i class="fas fa-copy"></i></button></td></tr>
+        <tr><td>Branch</td><td>Mombasa Branch</td></tr>
+        <tr><td>Swift Code</td><td>EQBLKENA <button class="copy-btn" onclick="copyText('EQBLKENA',this)"><i class="fas fa-copy"></i></button></td></tr>
+        <tr><td>Reference</td><td>Your Name / Invoice No.</td></tr>
+      </table>
+      <div class="space-y-3 mb-5">
+        <div class="flex gap-3 items-start bg-gray-50 rounded-xl p-3">
+          <div class="w-7 h-7 bg-yellow-500 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0">1</div>
+          <div><p class="text-sm font-semibold">Transfer using the details above</p><p class="text-xs text-gray-500">Via mobile banking, internet banking or cash deposit at any Equity Bank branch.</p></div>
+        </div>
+        <div class="flex gap-3 items-start bg-gray-50 rounded-xl p-3">
+          <div class="w-7 h-7 bg-yellow-500 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0">2</div>
+          <div><p class="text-sm font-semibold">Send proof of payment</p><p class="text-xs text-gray-500">Email or WhatsApp your transaction receipt so we can confirm and schedule your service.</p></div>
+        </div>
+        <div class="flex gap-3 items-start bg-gray-50 rounded-xl p-3">
+          <div class="w-7 h-7 bg-yellow-500 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0">3</div>
+          <div><p class="text-sm font-semibold">Confirmed within 1 business day</p></div>
+        </div>
+      </div>
+      <div class="flex gap-3">
+        <a href="mailto:glacierhvacsolution@gmail.com?subject=Bank%20Transfer%20Proof%20of%20Payment" class="flex-1 flex items-center justify-center gap-2 bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2.5 rounded-lg text-sm transition-colors"><i class="fas fa-envelope"></i> Email Proof</a>
+        <a href="https://wa.me/254748471841?text=Hello!%20I've%20completed%20a%20bank%20transfer%20for%20Glacier%20HVAC%20services." target="_blank" class="flex-1 flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold py-2.5 rounded-lg text-sm transition-colors"><i class="fab fa-whatsapp"></i> WhatsApp Proof</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     JAVASCRIPT — All functionality
+════════════════════════════════════════ -->
+<script>
+/* ══════════════════════════════════════════════════════
+   PAYMENT CONFIG
+   ──────────────────────────────────────────────────────
+   SETUP STEPS (one-time, 5 minutes):
+   1. Go to https://dashboard.flutterwave.com → sign up free
+   2. Complete business verification
+   3. Settings → API Keys → copy your LIVE Public Key
+   4. Replace FLWPUBK_TEST-... below with your LIVE key
+   5. Both M-Pesa STK push and card payments go live instantly
+
+   TEST credentials (safe to use, no real money):
+   • M-Pesa phone: 0708374149
+   • Card: 4187427415564246 | 09/32 | CVV 828 | PIN 3310 | OTP 12345
+══════════════════════════════════════════════════════ */
+const FLW_KEY         = 'FLWPUBK_TEST-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-X'; // ← REPLACE WITH YOUR LIVE KEY
+const BIZ_NAME        = 'Glacier HVAC Solutions';
+const BIZ_EMAIL       = 'glacierhvacsolution@gmail.com';
+const NOTIFY_URL      = 'https://formspree.io/f/xwvzqyga'; // emails glacierhvacsolution@gmail.com
+
+function txRef() { return 'GHVAC-' + Date.now() + '-' + Math.random().toString(36).substr(2,5).toUpperCase(); }
+
+function notifyEmail(subject, data) {
+  fetch(NOTIFY_URL, {
+    method:'POST',
+    headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body: JSON.stringify({...data, _subject: subject})
+  }).catch(()=>{});
+}
+
+/* ── MODAL ── */
+function openModal(id) {
+  document.getElementById(id).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+  document.body.style.overflow = '';
+  const fw = document.getElementById(id).querySelector('[id$="-form-wrap"]');
+  const ss = document.getElementById(id).querySelector('.pay-success');
+  if(fw) fw.style.display='';
+  if(ss) ss.style.display='none';
+}
+document.querySelectorAll('.modal-overlay').forEach(ov => {
+  ov.addEventListener('click', function(e){ if(e.target===this) closeModal(this.id); });
+});
+document.addEventListener('keydown', e => {
+  if(e.key==='Escape') document.querySelectorAll('.modal-overlay.open').forEach(m=>closeModal(m.id));
+});
+
+/* ── STK ALERT ── */
+function showStkAlert(msg, type) {
+  const el = document.getElementById('stk-alert');
+  el.className = type==='error' ? 'alert-er' : 'alert-ok';
+  el.innerHTML = '<i class="fas fa-'+(type==='error'?'exclamation-circle':'check-circle')+'"></i> '+msg;
+  el.style.display = 'block';
+}
+
+/* ── M-PESA STK PUSH via Daraja (Till 9281612) ── */
+/* SETUP: Deploy the Apps Script backend and set DARAJA_STK_URL below */
+const DARAJA_STK_URL = 'YOUR_APPS_SCRIPT_STK_URL'; // ← Paste your Apps Script URL after deploying
+
+function sendDarajaSTK() {
+  const rawPhone = document.getElementById('stk-phone').value.trim().replace(/\s/g,'');
+  const amount   = parseFloat(document.getElementById('stk-amount').value.trim());
+  const service  = document.getElementById('stk-service').value;
+  const name     = document.getElementById('stk-name').value.trim() || 'Glacier HVAC Customer';
+
+  if(!rawPhone || !amount || !service){
+    showStkAlert('Please fill in phone number, amount and service.','error'); return;
+  }
+  if(!/^(07|01)\d{8}$/.test(rawPhone)){
+    showStkAlert('Enter a valid Safaricom number: 07XXXXXXXX','error'); return;
+  }
+  if(isNaN(amount)||amount<1){
+    showStkAlert('Please enter a valid amount (minimum KES 1).','error'); return;
+  }
+
+  const btn = document.getElementById('stk-btn');
+  btn.disabled=true;
+  btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Sending push…';
+
+  /* Send to Daraja backend via Apps Script */
+  fetch(DARAJA_STK_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    body: new URLSearchParams({ phone: rawPhone, amount, service, name })
+  }).then(() => {
+    /* Show success — STK push sent */
+    document.getElementById('mpesa-form-wrap').style.display='none';
+    document.getElementById('mpesa-success').style.display='block';
+  }).catch(() => {
+    showStkAlert('Network error. Please pay manually using Till 9281612.','error');
+    btn.disabled=false;
+    btn.innerHTML='<i class="fas fa-paper-plane"></i> Send STK Push to My Phone';
+  });
+}
+
+/* Legacy Flutterwave sendSTK — kept for reference */
+function sendSTK() {
+  const rawPhone = document.getElementById('stk-phone').value.trim().replace(/\s/g,'');
+  const amount   = parseFloat(document.getElementById('stk-amount').value.trim());
+  const service  = document.getElementById('stk-service').value;
+  const name     = document.getElementById('stk-name').value.trim() || 'Glacier HVAC Customer';
+  const email    = document.getElementById('stk-email').value.trim() || BIZ_EMAIL;
+
+  if(!rawPhone || !amount || !service){
+    showStkAlert('Please fill in phone number, amount and service.','error'); return;
+  }
+  if(!/^(07|01)\d{8}$/.test(rawPhone)){
+    showStkAlert('Enter a valid Safaricom number: 07XXXXXXXX','error'); return;
+  }
+  if(isNaN(amount)||amount<1){
+    showStkAlert('Please enter a valid amount (minimum KES 1).','error'); return;
+  }
+  const phone254 = '254'+rawPhone.substring(1);
+  const btn = document.getElementById('stk-btn');
+  btn.disabled=true;
+  btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Sending push…';
+
+  FlutterwaveCheckout({
+    public_key:      FLW_KEY,
+    tx_ref:          txRef(),
+    amount:          amount,
+    currency:        'KES',
+    payment_options: 'mpesa',
+    customer:{ email, phone_number:phone254, name },
+    meta:{ service },
+    customizations:{ title:BIZ_NAME, description:'Payment for: '+service },
+    callback: function(res){
+      btn.disabled=false;
+      btn.innerHTML='<i class="fas fa-paper-plane"></i> Send STK Push to My Phone';
+      if(res.status==='successful'||res.status==='completed'){
+        document.getElementById('mpesa-form-wrap').style.display='none';
+        document.getElementById('mpesa-success').style.display='block';
+        notifyEmail('✅ M-Pesa Payment — Glacier HVAC',{customer:name,phone:rawPhone,service,amount:'KES '+amount,tx_id:res.transaction_id,status:res.status});
+      } else {
+        showStkAlert('Payment not completed. Try again or use Paybill above.','error');
+      }
+    },
+    onclose: function(){
+      btn.disabled=false;
+      btn.innerHTML='<i class="fas fa-paper-plane"></i> Send STK Push to My Phone';
+    }
+  });
+}
+
+/* ── CARD PREVIEW ── */
+function updatePreview(){
+  const n = document.getElementById('card-name');
+  document.getElementById('prev-name').textContent = (n&&n.value) ? n.value.toUpperCase() : 'YOUR NAME';
+}
+
+/* ── CARD ALERT ── */
+function showCardAlert(msg, type) {
+  const el = document.getElementById('card-alert');
+  el.className = type==='error' ? 'alert-er' : 'alert-ok';
+  el.innerHTML = '<i class="fas fa-'+(type==='error'?'exclamation-circle':'check-circle')+'"></i> '+msg;
+  el.style.display='block';
+}
+
+/* ── VISA / CARD PAYMENT via Flutterwave ── */
+function processCard(){
+  const name   = document.getElementById('card-name').value.trim();
+  const email  = document.getElementById('card-email').value.trim();
+  const phone  = document.getElementById('card-phone').value.trim();
+  const amount = parseFloat(document.getElementById('card-amount').value.trim());
+  const svc    = document.getElementById('card-service').value;
+
+  if(!name||!email||!amount||!svc){
+    showCardAlert('Please fill in all required fields.','error'); return;
+  }
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+    showCardAlert('Please enter a valid email address.','error'); return;
+  }
+  if(isNaN(amount)||amount<1){
+    showCardAlert('Please enter a valid amount (minimum KES 1).','error'); return;
+  }
+  const btn = document.getElementById('visa-pay-btn');
+  btn.disabled=true;
+  btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Opening secure payment…';
+
+  FlutterwaveCheckout({
+    public_key:      FLW_KEY,
+    tx_ref:          txRef(),
+    amount:          amount,
+    currency:        'KES',
+    payment_options: 'card',
+    customer:{ email, phone_number:phone||'', name },
+    meta:{ service:svc },
+    customizations:{ title:BIZ_NAME, description:'Payment for: '+svc },
+    callback: function(res){
+      btn.disabled=false;
+      btn.innerHTML='<i class="fas fa-lock"></i> Continue to Secure Payment';
+      if(res.status==='successful'||res.status==='completed'){
+        document.getElementById('visa-form-wrap').style.display='none';
+        document.getElementById('visa-success').style.display='block';
+        notifyEmail('✅ Card Payment — Glacier HVAC',{customer:name,email,service:svc,amount:'KES '+amount,tx_id:res.transaction_id,status:res.status,note:'Card details NOT included — PCI compliance'});
+      } else {
+        showCardAlert('Payment was not completed. Please try again or use a different card.','error');
+      }
+    },
+    onclose: function(){
+      btn.disabled=false;
+      btn.innerHTML='<i class="fas fa-lock"></i> Continue to Secure Payment';
+    }
+  });
+}
+
+/* ── COPY BANK DETAILS ── */
+function copyText(txt, btn) {
+  navigator.clipboard.writeText(txt).then(()=>{
+    btn.innerHTML='<i class="fas fa-check"></i>';
+    btn.style.color='#16a34a';
+    setTimeout(()=>{ btn.innerHTML='<i class="fas fa-copy"></i>'; btn.style.color=''; }, 1800);
+  }).catch(()=>{
+    const t=document.createElement('textarea');
+    t.value=txt; document.body.appendChild(t); t.select();
+    document.execCommand('copy'); document.body.removeChild(t);
+    btn.innerHTML='<i class="fas fa-check"></i>';
+    setTimeout(()=>btn.innerHTML='<i class="fas fa-copy"></i>',1800);
+  });
+}
+
+/* ═══════════════════════════════════════════
+   CONTACT FORM — Web3Forms (free, client-side, no server needed)
+   Submissions emailed to glacierhvacsolution@gmail.com instantly
+═══════════════════════════════════════════ */
+const W3F_KEY = '55418ee3-1f9b-4732-a054-afb26952d441';
+const cForm   = document.getElementById('contactForm');
+const cAlert  = document.getElementById('formAlert');
+const cBtn    = document.getElementById('submitBtn');
+
+function showFormAlert(type, html){
+  cAlert.className = 'mb-4 p-3 rounded-lg text-sm font-semibold '+(type==='ok'?'bg-green-100 text-green-700 border border-green-300':'bg-red-100 text-red-700 border border-red-300');
+  cAlert.innerHTML = html;
+  cAlert.classList.remove('hidden');
+  cAlert.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+cForm.addEventListener('submit', async function(e){
+  e.preventDefault();
+  const name     = cForm.querySelector('[name=name]').value.trim();
+  const phone    = cForm.querySelector('[name=phone]').value.trim();
+  const email    = cForm.querySelector('[name=email]').value.trim();
+  const service  = cForm.querySelector('[name=service]').value;
+  const location = cForm.querySelector('[name=location]') ? cForm.querySelector('[name=location]').value.trim() : '';
+  const message  = cForm.querySelector('[name=message]').value.trim();
+
+  if(!name||!phone||!email||!service||!message){
+    showFormAlert('er','<i class="fas fa-exclamation-circle mr-1"></i> Please fill in all required fields.'); return;
+  }
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+    showFormAlert('er','<i class="fas fa-exclamation-circle mr-1"></i> Please enter a valid email address.'); return;
+  }
+  cBtn.disabled=true;
+  cBtn.innerHTML='<i class="fas fa-spinner fa-spin mr-2"></i> Sending…';
+  cAlert.classList.add('hidden');
+
+  try{
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json','Accept':'application/json'},
+      body: JSON.stringify({
+        access_key: W3F_KEY,
+        subject: '🔔 New HVAC Enquiry: '+service+' from '+name,
+        from_name: 'Glacier HVAC Website',
+        name, phone, email, service, location, message,
+        botcheck: ''
+      })
+    });
+    const data = await res.json();
+    if(data.success){
+      showFormAlert('ok','<i class="fas fa-check-circle mr-1"></i> <strong>Message sent!</strong> Thank you, '+name+'! We\'ll contact you within 1 hour.');
+      cForm.reset();
+    } else {
+      showFormAlert('er','<i class="fas fa-exclamation-circle mr-1"></i> '+(data.message||'Submission failed. Please try again.'));
+    }
+  } catch(err){
+    showFormAlert('er','<i class="fas fa-exclamation-circle mr-1"></i> Network error. Call us: <a href="tel:+254748471841" class="underline font-bold">+254 748 471 841</a>');
+  } finally {
+    cBtn.disabled=false;
+    cBtn.innerHTML='<i class="fas fa-paper-plane mr-2"></i> Send Message';
+  }
+});
+
+/* ═══════════════════════════════════════════
+   MOBILE MENU
+═══════════════════════════════════════════ */
+const hamburger  = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+const hamIcon    = document.getElementById('ham-icon');
+
+hamburger.addEventListener('click',()=>{
+  mobileMenu.classList.toggle('open');
+  hamIcon.className = mobileMenu.classList.contains('open') ? 'fas fa-times text-xl' : 'fas fa-bars text-xl';
+});
+mobileMenu.querySelectorAll('a').forEach(a=>{
+  a.addEventListener('click',()=>{
+    mobileMenu.classList.remove('open');
+    hamIcon.className='fas fa-bars text-xl';
+  });
+});
+
+/* ═══════════════════════════════════════════
+   SMOOTH SCROLL (fixed: no crash on #-only hrefs)
+═══════════════════════════════════════════ */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',function(e){
+    const href = this.getAttribute('href');
+    if(!href||href==='#') return;
+    const target = document.querySelector(href);
+    if(!target) return;
+    e.preventDefault();
+    window.scrollTo({top:target.getBoundingClientRect().top+window.scrollY-68,behavior:'smooth'});
+  });
+});
+
+/* ═══════════════════════════════════════════
+   SCROLL EFFECTS
+═══════════════════════════════════════════ */
+const navbar = document.getElementById('navbar');
+const scrollTopBtn = document.getElementById('scrollTop');
+
+window.addEventListener('scroll',()=>{
+  // Navbar shadow
+  navbar.classList.toggle('nav-scrolled', window.scrollY>10);
+  // Scroll-to-top visibility
+  scrollTopBtn.classList.toggle('show', window.scrollY>500);
+});
+
+/* ═══════════════════════════════════════════
+   ACTIVE NAV LINK on scroll
+═══════════════════════════════════════════ */
+const allSections = document.querySelectorAll('section[id]');
+const navLinks    = document.querySelectorAll('.nav-link');
+allSections.forEach(sec=>{
+  new IntersectionObserver(entries=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting)
+        navLinks.forEach(a=>a.classList.toggle('text-blue-600',a.getAttribute('href')==='#'+en.target.id));
+    });
+  },{rootMargin:'-40% 0px -55% 0px'}).observe(sec);
+});
+
+/* ═══════════════════════════════════════════
+   SCROLL REVEAL
+═══════════════════════════════════════════ */
+new IntersectionObserver((entries,obs)=>{
+  entries.forEach(en=>{
+    if(en.isIntersecting){en.target.classList.add('visible');obs.unobserve(en.target);}
+  });
+},{threshold:0.1}).observe && (() => {
+  const ro = new IntersectionObserver((entries,obs)=>{
+    entries.forEach(en=>{if(en.isIntersecting){en.target.classList.add('visible');obs.unobserve(en.target);}});
+  },{threshold:0.1});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{
+    el.style.transitionDelay=(i%4)*0.09+'s';
+    ro.observe(el);
+  });
+})();
+</script>
+</body>
+</html>
